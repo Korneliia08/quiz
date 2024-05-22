@@ -29,15 +29,24 @@ function Quiz(props: QuizInterface) {
     nextQuestion();
   }
 
+  // Go to next question
   function nextQuestion() {
+    //check if current question is selected
+    if (questionsArray[currentQuestionNumber].open) {
+      console.log("select ");
+      return;
+    }
     setCurrentQuestionNumber(currentQuestionNumber + 1);
   }
 
-  function onSelectAnswer(correct: boolean) {
+  function onSelectAnswer(correct: string) {
+    //question is resolve and close
+    if (!questionsArray[currentQuestionNumber].open) return;
+    // update question data after choose answer
     setQuestionsArray(
       questionsArray.map((question, index) => {
         if (index == currentQuestionNumber) {
-          question.correct = correct;
+          question.setSelectedAnswer(correct);
         }
         return question;
       }),
@@ -51,12 +60,17 @@ function Quiz(props: QuizInterface) {
       <div>
         <QuizQuestion title={questionsArray[currentQuestionNumber].question} />
         <QuizAnswers
-          answers={questionsArray[currentQuestionNumber].answers}
+          questionsData={questionsArray[currentQuestionNumber]}
           onSelectAnswer={onSelectAnswer}
         />
       </div>
 
-      <button onClick={checkQuestion}>Next</button>
+      <button
+        disabled={questionsArray[currentQuestionNumber].open}
+        onClick={checkQuestion}
+      >
+        Next
+      </button>
       <QuizBottomBar questionsData={questionsArray} />
     </div>
   );

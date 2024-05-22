@@ -16,7 +16,12 @@
     border: none;
     transition: 250ms ease;
 
-    &:hover {
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(0.7);
+    }
+
+    &:hover:not(:disabled) {
       cursor: pointer;
       background-color: #368075;
     }

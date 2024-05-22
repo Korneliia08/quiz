@@ -11,9 +11,21 @@
     color: black;
     font-size: 18px;
 
-    &:hover {
+    &:hover:not(.close) {
       cursor: pointer;
       background-color: #b6b6b6;
+    }
+
+    .close {
+
+    }
+
+    &.correct {
+      background: green;
+    }
+
+    &.unCorrect {
+      background: red;
     }
   }
 }

@@ -1,32 +1,37 @@
 import style from "./QuizAnswers.module.scss";
 import { AnswerInterface } from "../../../../models/answerInterface.ts";
-import { useState } from "react";
-import {AnswerInterface} from "../../../../models/answerInterface.ts";
+import { Question } from "../../../../models/class/question.ts";
 
 interface QuizAnswersInterface {
-  answers: AnswerInterface[];
-  onSelectAnswer: (correct: boolean) => void;
+  questionsData: Question;
+  onSelectAnswer: (answer: string) => void;
 }
 
 function QuizAnswers(props: QuizAnswersInterface) {
-  const [correct, setCorrect] = useState(false);
-  const [uncorrect, setUncorrect] = useState(false);
-
   function chooseAnswere(answer: AnswerInterface) {
-    props.onSelectAnswer(answer.isCorrect);
-    if (answer.isCorrect) {
-      setCorrect(true);
+    props.onSelectAnswer(answer.text);
+  }
+
+  function checkCorrect(answer: AnswerInterface) {
+    if (answer.text != props.questionsData.selectedAnswer) return;
+    if (props.questionsData.selectedAnswerCorrect) {
+      return style.correct;
     } else {
-      setUncorrect(true);
+      return style.unCorrect;
     }
   }
 
-    const answersMap = props.answers.map((answer) => {
-        return <div className={style.optionOfAnswer} onClick={() => chooseAnswere(answer)}>{answer.text}</div>;
-    });
-    return <div className={style.quizAnswersContainer}>
-        {answersMap}
-    </div>;
+  const answersMap = props.questionsData.answers.map((answer) => {
+    return (
+      <div
+        className={`${style.optionOfAnswer} ${checkCorrect(answer)} ${!props.questionsData.open ? style.close : ""}`}
+        onClick={() => chooseAnswere(answer)}
+      >
+        {answer.text}
+      </div>
+    );
+  });
+  return <div className={style.quizAnswersContainer}>{answersMap}</div>;
 }
 
 export default QuizAnswers;
