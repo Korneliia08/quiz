@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Question } from "../../../models/class/question.ts";
 import QuizBottomBar from "./quizBottomBar/quizBottomBar.tsx";
 import QuizQuestion from "./quizQuestion/quizQuestion.tsx";
-import QuizAnswers from "./quizAnswers/quizQuestion.tsx";
+import QuizAnswers from "./quizAnswers/quizAnswers.tsx";
 
 interface QuizInterface {
   questionNumber: number;
@@ -22,8 +22,18 @@ function Quiz(props: QuizInterface) {
       tmpArray.push(tmpObject);
     });
     setQuestionsArray(tmpArray);
+    setCurrentQuestionNumber(0);
   }, []);
 
+  function checkQuestion() {
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    setCurrentQuestionNumber(currentQuestionNumber + 1);
+  }
+
+  if (!questionsArray.length) return <span>Loading question</span>;
   return (
     <div className={style.quizContainer}>
       <QuizTopBar questionCount={questionsArray.length} questionNumber={1} />
@@ -32,7 +42,7 @@ function Quiz(props: QuizInterface) {
         <QuizAnswers answers={questionsArray[currentQuestionNumber].answers} />
       </div>
 
-      <button>Next</button>
+      <button onClick={checkQuestion}>Next</button>
       <QuizBottomBar />
     </div>
   );
