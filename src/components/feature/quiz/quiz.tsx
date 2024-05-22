@@ -4,6 +4,8 @@ import QuizTopBar from "./quizTopBar/quizTopBar.tsx";
 import { useEffect, useState } from "react";
 import { Question } from "../../../models/class/question.ts";
 import QuizBottomBar from "./quizBottomBar/quizBottomBar.tsx";
+import QuizQuestion from "./quizQuestion/quizQuestion.tsx";
+import QuizAnswers from "./quizAnswers/quizQuestion.tsx";
 
 interface QuizInterface {
   questionNumber: number;
@@ -25,7 +27,12 @@ function Quiz(props: QuizInterface) {
   return (
     <div className={style.quizContainer}>
       <QuizTopBar questionCount={questionsArray.length} questionNumber={1} />
-      <div></div>/<button>Next</button>
+      <div>
+        <QuizQuestion title={questionsArray[currentQuestionNumber].question} />
+        <QuizAnswers answers={questionsArray[currentQuestionNumber].answers} />
+      </div>
+
+      <button>Next</button>
       <QuizBottomBar />
     </div>
   );
