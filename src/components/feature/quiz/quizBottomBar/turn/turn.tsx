@@ -8,7 +8,10 @@ interface TurnInterface {
 }
 
 function Turn(props: TurnInterface) {
+  // choosed class
   const [correctClass, setCorrectClass] = useState<string>();
+
+  // set class to turn
   useEffect(() => {
     if (props.correct === true) {
       setCorrectClass(style.correctAnswer);

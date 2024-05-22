@@ -15,16 +15,22 @@ interface QuizInterface {
 }
 
 function Quiz(props: QuizInterface) {
+  //current question number
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState<number>(0);
+  // questions object state
   const [questionsArray, setQuestionsArray] = useState<Question[]>([]);
   const navigate = useNavigate();
   useEffect(() => {
+    //push data to state
     const tmpArray: Question[] = [];
     questions.forEach((question) => {
+      //randomize answers order
+      question.answers.sort(() => Math.random() - 0.5);
       const tmpObject = new Question(question.answers, question.question);
       tmpArray.push(tmpObject);
     });
     setQuestionsArray(tmpArray);
+    // reset current question
     setCurrentQuestionNumber(0);
   }, []);
 
@@ -39,10 +45,13 @@ function Quiz(props: QuizInterface) {
       console.log("select ");
       return;
     }
+    // if all question complete go to summery page
     if (currentQuestionNumber + 1 >= questionsArray.length) {
       props.setQuestionDataToResult(questionsArray);
       navigate("summary");
+      return;
     }
+    // select next active question
     setCurrentQuestionNumber(currentQuestionNumber + 1);
   }
 
@@ -60,6 +69,7 @@ function Quiz(props: QuizInterface) {
     );
   }
 
+  //if loading data display ,,loading"
   if (!questionsArray.length) return <span>Loading question</span>;
   return (
     <div className={style.quizContainer}>

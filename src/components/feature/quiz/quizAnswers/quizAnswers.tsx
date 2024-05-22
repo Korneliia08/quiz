@@ -13,6 +13,7 @@ function QuizAnswers(props: QuizAnswersInterface) {
   }
 
   function checkCorrect(answer: AnswerInterface) {
+    //  Prevent selecting the same answer multiple times
     if (answer.text != props.questionsData.selectedAnswer) return;
     if (props.questionsData.selectedAnswerCorrect) {
       return style.correct;
@@ -21,6 +22,7 @@ function QuizAnswers(props: QuizAnswersInterface) {
     }
   }
 
+  // Mapping the list of answers to the appropriate class
   const answersMap = props.questionsData.answers.map((answer) => {
     return (
       <div
