@@ -1,6 +1,6 @@
-import {Question} from "../models/question.ts";
+import { QuestionInterface} from "../models/questionInterface.ts";
 
-export const questions:Question[] = [{
+export const questions:QuestionInterface[] = [{
     "question": "In CSS, which of these values CANNOT be used with the \"position\" property?",
     "answers": [
     {
