@@ -1,12 +1,18 @@
-.wrapper{
+.wrapper {
   background-color: #429487;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  & > h1 {
+    color: white;
+    padding-bottom: 20px;
+  }
 }
 
-*{
+* {
   margin: 0;
   box-sizing: border-box;
 }

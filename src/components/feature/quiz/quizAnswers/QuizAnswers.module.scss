@@ -22,10 +22,12 @@
 
     &.correct {
       background: green;
+      color: white;
     }
 
     &.unCorrect {
       background: red;
+      color: white;
     }
   }
 }

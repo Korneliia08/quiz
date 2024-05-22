@@ -22,6 +22,7 @@ function App() {
   ]);
   return (
     <div className={style.wrapper}>
+      <h1>Quiz:</h1>
       <RouterProvider router={router} />
     </div>
   );

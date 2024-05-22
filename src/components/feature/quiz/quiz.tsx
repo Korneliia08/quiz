@@ -76,6 +76,7 @@ function Quiz(props: QuizInterface) {
       </div>
 
       <button
+        className={style.btnNext}
         disabled={questionsArray[currentQuestionNumber].open}
         onClick={checkQuestion}
       >

@@ -1,3 +1,6 @@
-.QuizQuestionContainer{
-
+.QuizQuestionContainer {
+  & > h3 {
+    margin-top: 18px;
+    margin-bottom: 24px;
+  }
 }

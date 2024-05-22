@@ -11,20 +11,26 @@ function Summary(props: SummaryInterface) {
     <div className={style.summaryContainer}>
       <h2>Quiz complete</h2>
       <p>
-        Correct:s{" "}
-        {
-          props.questionDataToResult.filter((question) => question.correct)
-            .length
-        }
+        Correct answers:
+        <b>
+          {
+            props.questionDataToResult.filter((question) => question.correct)
+              .length
+          }
+        </b>
       </p>
       <p>
-        UnCorrect:{" "}
-        {
-          props.questionDataToResult.filter((question) => !question.correct)
-            .length
-        }
+        Incorrect answers:
+        <b>
+          {
+            props.questionDataToResult.filter((question) => !question.correct)
+              .length
+          }{" "}
+        </b>
       </p>
-      <NavLink to={"/"}>Replay</NavLink>
+      <NavLink className={style.back} to={"/"}>
+        Replay
+      </NavLink>
     </div>
   );
 }

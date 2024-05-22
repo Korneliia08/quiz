@@ -1,16 +1,15 @@
-import style from './quizQuestion.module.scss'
-import {questions} from "../../../data/questions.ts";
-import QuizTopBar from "./quizTopBar/quizTopBar.tsx";
-interface QuizQuestionInterface{
- title:string
-}
-function QuizQuestion(props:QuizQuestionInterface) {
+import style from "./quizQuestion.module.scss";
 
-    return (
-        <div className={style.QuizQuestionContainer}>
-            {props.title}
-        </div>
-    )
+interface QuizQuestionInterface {
+  title: string;
 }
 
-export default QuizQuestion
+function QuizQuestion(props: QuizQuestionInterface) {
+  return (
+    <div className={style.QuizQuestionContainer}>
+      <h3>{props.title}</h3>
+    </div>
+  );
+}
+
+export default QuizQuestion;
