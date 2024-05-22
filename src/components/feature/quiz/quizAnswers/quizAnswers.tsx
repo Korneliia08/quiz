@@ -1,18 +1,21 @@
 import style from "./QuizAnswers.module.scss";
-import { AnswerInterface } from "../../../../models/answerInterface.ts";
+import {AnswerInterface} from "../../../../models/answerInterface.ts";
 
 interface QuizAnswersInterface {
-  answers: AnswerInterface[];
-  onSelectAnswer: (answer: string) => void;
+    answers: AnswerInterface[];
+    onSelectAnswer: (answer: string) => void;
 }
 
 function QuizAnswers(props: QuizAnswersInterface) {
-  function chooseAnswere(answer: AnswerInterface) {}
+    function chooseAnswere(answer: AnswerInterface) {
+    }
 
-  const answersMap = props.answers.map((answer) => {
-    return <div onClick={() => chooseAnswere(answer)}>{answer.text}</div>;
-  });
-  return <div className={style.QuizAnswersContainer}>{answersMap}</div>;
+    const answersMap = props.answers.map((answer) => {
+        return <div className={style.optionOfAnswer} onClick={() => chooseAnswere(answer)}>{answer.text}</div>;
+    });
+    return <div className={style.quizAnswersContainer}>
+        {answersMap}
+    </div>;
 }
 
 export default QuizAnswers;
