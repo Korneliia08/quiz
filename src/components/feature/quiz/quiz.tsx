@@ -33,17 +33,31 @@ function Quiz(props: QuizInterface) {
     setCurrentQuestionNumber(currentQuestionNumber + 1);
   }
 
+  function onSelectAnswer(correct: boolean) {
+    setQuestionsArray(
+      questionsArray.map((question, index) => {
+        if (index == currentQuestionNumber) {
+          question.correct = correct;
+        }
+        return question;
+      }),
+    );
+  }
+
   if (!questionsArray.length) return <span>Loading question</span>;
   return (
     <div className={style.quizContainer}>
       <QuizTopBar questionCount={questionsArray.length} questionNumber={1} />
       <div>
         <QuizQuestion title={questionsArray[currentQuestionNumber].question} />
-        <QuizAnswers answers={questionsArray[currentQuestionNumber].answers} />
+        <QuizAnswers
+          answers={questionsArray[currentQuestionNumber].answers}
+          onSelectAnswer={onSelectAnswer}
+        />
       </div>
 
       <button onClick={checkQuestion}>Next</button>
-      <QuizBottomBar />
+      <QuizBottomBar questionsData={questionsArray} />
     </div>
   );
 }
