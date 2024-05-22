@@ -1,5 +1,4 @@
 import style from "./quiz.module.scss";
-import { questions } from "../../../data/questions.ts";
 import QuizTopBar from "./quizTopBar/quizTopBar.tsx";
 import { useEffect, useState } from "react";
 import { Question } from "../../../models/class/question.ts";
@@ -7,11 +6,13 @@ import QuizBottomBar from "./quizBottomBar/quizBottomBar.tsx";
 import QuizQuestion from "./quizQuestion/quizQuestion.tsx";
 import QuizAnswers from "./quizAnswers/quizAnswers.tsx";
 import { useNavigate } from "react-router";
+import { QuestionInterface } from "../../../models/questionInterface.ts";
 
 interface QuizInterface {
   questionNumber: number;
   questionCount: number;
   setQuestionDataToResult: (data: Question[]) => void;
+  questions: QuestionInterface[];
 }
 
 function Quiz(props: QuizInterface) {
@@ -23,7 +24,7 @@ function Quiz(props: QuizInterface) {
   useEffect(() => {
     //push data to state
     const tmpArray: Question[] = [];
-    questions.forEach((question) => {
+    props.questions.forEach((question) => {
       //randomize answers order
       question.answers.sort(() => Math.random() - 0.5);
       const tmpObject = new Question(question.answers, question.question);

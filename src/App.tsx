@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router";
 import Summary from "./components/feature/quiz/summary/summary.tsx";
 import { useState } from "react";
 import { Question } from "./models/class/question.ts";
+import { questions } from "./data/questions.ts";
 
 function App() {
   const [questionDataToResult, setQuestionDataToResult] = useState<Question[]>(
@@ -13,7 +14,12 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Quiz setQuestionDataToResult={setQuestionDataToResult} />,
+      element: (
+        <Quiz
+          setQuestionDataToResult={setQuestionDataToResult}
+          questions={questions}
+        />
+      ),
     },
     {
       path: "summary",
