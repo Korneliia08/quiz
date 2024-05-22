@@ -61,5 +61,7 @@ export const questions:Question[] = [{
         "text": "Infrastructure as a Server",
         "isCorrect": false
     }
-]
+    ]
 }
+]
+
