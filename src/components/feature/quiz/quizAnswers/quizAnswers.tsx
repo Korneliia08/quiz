@@ -1,6 +1,7 @@
 import style from "./QuizAnswers.module.scss";
 import { AnswerInterface } from "../../../../models/answerInterface.ts";
 import { useState } from "react";
+import {AnswerInterface} from "../../../../models/answerInterface.ts";
 
 interface QuizAnswersInterface {
   answers: AnswerInterface[];
@@ -20,10 +21,12 @@ function QuizAnswers(props: QuizAnswersInterface) {
     }
   }
 
-  const answersMap = props.answers.map((answer) => {
-    return <div onClick={() => chooseAnswere(answer)}>{answer.text}</div>;
-  });
-  return <div className={style.QuizAnswersContainer}>{answersMap}</div>;
+    const answersMap = props.answers.map((answer) => {
+        return <div className={style.optionOfAnswer} onClick={() => chooseAnswere(answer)}>{answer.text}</div>;
+    });
+    return <div className={style.quizAnswersContainer}>
+        {answersMap}
+    </div>;
 }
 
 export default QuizAnswers;
