@@ -25,7 +25,7 @@ function Quiz(props: QuizInterface) {
   return (
     <div className={style.quizContainer}>
       <QuizTopBar questionCount={questionsArray.length} questionNumber={1} />
-      <div></div>
+      <div></div>/<button>Next</button>
       <QuizBottomBar />
     </div>
   );
