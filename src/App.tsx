@@ -1,13 +1,12 @@
-import {useEffect, useState} from 'react'
-
-import './App.css'
+import { useState } from 'react'
+import style from "./App.module.scss";
 import Quiz from "./components/feature/quiz/quiz.tsx";
 
 function App() {
 
   return (
-    <div>
-<Quiz/>
+    <div className={style.wrapper}>
+        <Quiz/>
     </div>
   )
 }

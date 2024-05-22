@@ -1,0 +1,14 @@
+.wrapper {
+  background-color: #429487;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=App.module.css.map */

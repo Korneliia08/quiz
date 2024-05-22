@@ -1,13 +1,17 @@
 import style from "./quizBottomBar.module.scss";
+import Turn from "./turn/turn.tsx";
 
-interface QuizBottomBarInterface {}
+interface QuizBottomBarInterface {
+}
 
 function QuizBottomBar(props: QuizBottomBarInterface) {
-  return (
-    <div className={style.topBarContainer}>
-      3 kułka, z dodatkową klasą która ustawia że zielone
-    </div>
-  );
+    return (
+        <div className={style.bottomBarContainer}>
+            <Turn/>
+            <Turn/>
+            <Turn/>
+        </div>
+    );
 }
 
 export default QuizBottomBar;

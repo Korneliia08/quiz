@@ -1,0 +1,13 @@
+.turn {
+  background-color: #CCCCCC;
+  padding: 20px;
+  border-radius: 100%;
+
+  &.correctAnswer {
+    background-color: #377E22;
+  }
+
+  &.uncorrectAnswer {
+    background-color: #da0000;
+  }
+}
